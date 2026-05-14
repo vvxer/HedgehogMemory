@@ -17,6 +17,8 @@ Every AI agent eventually hits the context window limit. When this happens, you 
 
 HedgehogMemory solves this by storing memory in a **radial structure** — one permanent origin at the center, task-domain lines radiating outward, each carrying compressed nodes ordered by recency.
 
+HedgehogMemory proposes a fourth approach: never delete, only compress; the origin is always in the context. Most importantly, it allows loading to the corresponding time task state point at any time for continued development. When a task is completed, a node is moved along a line to add a new node or open a new line record, then the origin is returned. When loading a point, the context is cleared to enter the corresponding line or several points, maintaining alignment between different modules. Even if a node is loaded incorrectly or offset, it can still be drilled down because detailed summaries of the node are loaded, while clearing that part of the context, retaining only the origin architecture rules and necessary information, always providing maximum context space where it is most needed.
+
 ---
 
 ## Architecture
